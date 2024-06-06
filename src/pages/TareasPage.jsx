@@ -7,7 +7,7 @@ import AsideBar from "../components/AsideBar";
 import VideoCard from "../components/VideoCard";
 import { useVideos } from "../context/VideoContext";
 
-function MyVideosPage() {
+function TareasPage() {
   const { getTasks, tasks } = useTasks();
 
   useEffect(() => {
@@ -73,4 +73,4 @@ function MyVideosPage() {
   );
 }
 
-export default MyVideosPage;
+export default TareasPage;

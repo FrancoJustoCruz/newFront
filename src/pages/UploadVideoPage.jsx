@@ -41,7 +41,7 @@ function UploadVideoPage() {
       await createVideo(formData);
       alert('Video guardado exitosamente');
       reset();
-      navigate('/tasks');
+      navigate('/my-videos');
     } catch (error) {
       console.error("Error al subir el video:", error);
       alert("Hubo un error al subir el video. Por favor, inténtalo de nuevo.");
@@ -59,37 +59,37 @@ function UploadVideoPage() {
   }, [status]);
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold mb-6 text-center">Grabación de videos</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <div className="max-w-3xl mx-auto p-8 bg-sky-300 rounded-lg shadow-lg animate-fadeIn">
+      <h1 className="text-4xl font-extrabold mb-8 text-center text-indigo-600 animate-bounce">Grabación de videos</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         <div className="flex flex-col items-center">
-          <h4 className="text-xl font-semibold mb-2">En tiempo real</h4>
-          <video ref={videoRef} controls autoPlay height={200} className="rounded-md shadow-md mb-4" />
+          <h4 className="text-2xl font-semibold mb-4">En tiempo real</h4>
+          <video ref={videoRef} controls autoPlay height={200} className="rounded-lg shadow-lg mb-6" />
         </div>
 
         {mediaBlobUrl && (
           <div className="flex flex-col items-center">
-            <h4 className="text-xl font-semibold mb-2">Grabación:</h4>
-            <video src={mediaBlobUrl} controls autoPlay height={200} className="rounded-md shadow-md mb-4" />
+            <h4 className="text-2xl font-semibold mb-4">Grabación:</h4>
+            <video src={mediaBlobUrl} controls autoPlay height={200} className="rounded-lg shadow-lg mb-6" />
           </div>
         )}
 
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-6">
           <input
             type="text"
             placeholder="Título"
             {...register("title", { required: true })}
-            className="w-full bg-gray-100 text-gray-900 px-4 py-2 rounded-md"
+            className="w-full bg-gray-100 text-gray-900 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
           />
           <textarea
             rows="3"
             placeholder="Descripción"
             {...register("description", { required: true })}
-            className="w-full bg-gray-100 text-gray-900 px-4 py-2 rounded-md"
+            className="w-full bg-gray-100 text-gray-900 px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
           ></textarea>
         </div>
 
-        <div className="flex justify-around space-x-4">
+        <div className="flex justify-around space-x-4 mt-6">
           <button
             type="button"
             onClick={() => {
@@ -99,21 +99,21 @@ function UploadVideoPage() {
                 alert('Ya hay una grabación en progreso.');
               }
             }}
-            className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600"
+            className="px-6 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
           >
             Empezar a grabar
           </button>
           <button
             type="button"
             onClick={pauseRecording}
-            className="px-4 py-2 bg-yellow-500 text-white rounded-md shadow-md hover:bg-yellow-600"
+            className="px-6 py-2 bg-yellow-500 text-white rounded-lg shadow-md hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:scale-105"
           >
             Pausar
           </button>
           <button
             type="button"
             onClick={resumeRecording}
-            className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600"
+            className="px-6 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105"
           >
             Reanudar
           </button>
@@ -123,16 +123,16 @@ function UploadVideoPage() {
               stopRecording();
               setIsRecording(false);
             }}
-            className="px-4 py-2 bg-red-500 text-white rounded-md shadow-md hover:bg-red-600"
+            className="px-6 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105"
           >
             Detener
           </button>
         </div>
         
-        <div className="text-center mt-6">
+        <div className="text-center mt-8">
           <button
             type="submit"
-            className="px-6 py-2 bg-indigo-500 text-white rounded-md shadow-md hover:bg-indigo-600"
+            className="px-8 py-3 bg-indigo-500 text-white rounded-lg shadow-md hover:bg-indigo-600 transition duration-300 ease-in-out transform hover:scale-105"
           >
             Guardar video
           </button>

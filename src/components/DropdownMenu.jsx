@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { motion } from "framer-motion";
 import profile from '../../public/profile.png';
 import groupchat from '../../public/groupchat.png';
 import perfil2 from '../../public/perfil2.jpg';
 import logoutlogo2 from '../../public/logout2.png';
-import down from '../../public/down.png'
-import up from '../../public/up.png'
+import down from '../../public/down.png';
+import up from '../../public/up.png';
 
 function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +36,23 @@ function DropdownMenu() {
     setIsOpen(false);
   };
 
+  const menuVariants = {
+    open: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.3
+      }
+    },
+    closed: {
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
   return (
     <div className="relative font-[sans-serif] w-max mx-auto p-2" ref={dropdownRef}>
       <button
@@ -48,27 +66,32 @@ function DropdownMenu() {
           alt="user avatar"
         />
         {user.username}
-        
         <img 
           src={isOpen ? up : down}
+          className="ml-2 w-4"
         />
       </button>
       {isOpen && (
-        <ul className="absolute shadow-lg bg-white py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto">
-          <li className="py-2.5 px-6 flex items-center text-[#333] text-sm cursor-pointer" onClick={closeMenu}>
+        <motion.ul
+          initial="closed"
+          animate={isOpen ? "open" : "closed"}
+          variants={menuVariants}
+          className="absolute shadow-sky-300 shadow-lg bg-white py-2 z-[1000] min-w-full w-max rounded-lg max-h-96 overflow-auto"
+        >
+          <li className="py-2.5 px-6 flex items-center text-[#333] text-sm cursor-pointer hover:bg-sky-500 hover:text-white" onClick={closeMenu}>
             <img src={profile} alt="profile icon" className="mr-2 opacity-70" />
             <Link to="/profile">My profile</Link>
           </li>
-          <li className="py-2.5 px-6 flex items-center  text-[#333] text-sm cursor-pointer" onClick={closeMenu}>
+          <li className="py-2.5 px-6 flex items-center text-[#333] text-sm cursor-pointer hover:bg-sky-500 hover:text-white" onClick={closeMenu}>
             <img src={groupchat} alt="group chat icon" className="mr-2 opacity-70" />
-            <Link to="/tasks">Group chat</Link>
+            <Link to="/dashboard">Group chat</Link>
           </li>
           <hr className="w-[90%] mx-auto" />
-          <li className="py-2.5 px-6 flex items-center  text-red-500 text-sm cursor-pointer" onClick={() => { logout(); closeMenu(); }}>
-            <img src={logoutlogo2} alt="logout icon" className="mr-2 opacity-50 red" />
+          <li className="py-2.5 px-6 flex items-center text-red-500 text-sm cursor-pointer hover:bg-red-500 hover:text-white" onClick={() => { logout(); closeMenu(); }}>
+            <img src={logoutlogo2} alt="logout icon" className="mr-2 opacity-50" />
             <Link to="/">Logout</Link>
           </li>
-        </ul>
+        </motion.ul>
       )}
     </div>
   );

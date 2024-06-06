@@ -26,7 +26,7 @@ function TaskFormPage() {
     } else {
       createTask(data);
     }
-    navigate("/tasks");
+    navigate("/notas");
   });
 
   return (

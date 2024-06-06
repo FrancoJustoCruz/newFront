@@ -13,10 +13,13 @@ import UploadVideoPage from './pages/UploadVideoPage'
 import DashboardPage from './pages/DashboardPage'
 import VideoWatchPage from './pages/VideoWatchPage';
 import MyVideosPage from './pages/MyVideosPage'
+import TareasPage from './pages/TareasPage'
+import TeacherPage from './pages/TeacherPage'
 
 import ProtectedRoute from './ProtectedRoute'
 import { TaskProvider } from './context/TasksContext'
 import { VideoProvider } from './context/VideoContext'
+import { TareaProvider } from './context/TareaContext'
 import Navbar from './components/Navbar'
 
 
@@ -27,6 +30,7 @@ function App() {
     <AuthProvider>
       <VideoProvider>
       <TaskProvider>
+        <TareaProvider>
       
       <BrowserRouter>
       <main className=''>
@@ -40,6 +44,8 @@ function App() {
         <Route path='/notas' element={<TasksPage/>}/>
         <Route path='/dashboard' element={<DashboardPage/>}/>
         <Route path='/my-videos' element={<MyVideosPage/>}/>
+        <Route path='/tareas' element={<TareasPage/>}/>
+        <Route path='/tareasTeacher' element={<TeacherPage/>}/>
         <Route path="/videos/watch/:videoId" element={<VideoWatchPage />} />
         <Route path='/videos' element={<UploadVideoPage/>}/>
         <Route path='/add-task' element={<TaskFormPage/>}/>
@@ -50,6 +56,7 @@ function App() {
       </Routes>
       </main>
     </BrowserRouter>
+    </TareaProvider>
     </TaskProvider>
     </VideoProvider>
       
