@@ -1,33 +1,24 @@
 import React, { useEffect } from "react";
 import { useTasks } from "../context/TasksContext";
-import TaskCard from "../components/TaskCard";
-import { Link } from "react-router-dom";
 import AsideBar from "../components/AsideBar";
-
 import VideoCard from "../components/VideoCard";
 import { useVideos } from "../context/VideoContext";
 
 function MyVideosPage() {
-  const { getTasks, tasks } = useTasks();
-
-  useEffect(() => {
-    getTasks();
-  }, []);
-
+  const { getTasks } = useTasks();
   const { videos, getVideos } = useVideos();
 
   useEffect(() => {
+    getTasks();
     getVideos();
   }, []);
 
   return (
-    <>
-      <div className="flex gap-0 bg-white max-md:flex-wrap">
-        <AsideBar isOpen={true} />
-        <main className="flex flex-col grow shrink-0 basis-0 w-fit">
-          <section className="flex flex-col justify-center pb-16">
-            <section className="flex flex-col mt-6 self-center min-w-[1040px]">
-              <header className="flex gap-5 py-2 max-w-full font-medium w-[1040px] justify-between max-md:flex-wrap">
+    <div className="flex gap-0 bg-white min-h-screen max-md:flex-wrap">
+      <AsideBar isOpen={true} />
+      <main className="flex flex-col grow shrink-0 basis-0 w-full p-4 items-center">
+        <section className="flex flex-col mt-6 w-full max-w-4xl">
+        <header className="flex gap-5 py-2 max-w-full font-medium w-[1040px] justify-between max-md:flex-wrap">
                 <div className="flex flex-col justify-center px-5">
                   <h1 className="text-sm tracking-normal leading-6 text-gray-500">
                     My Library
@@ -45,54 +36,22 @@ function MyVideosPage() {
                   </button>
                 </div>
               </header>
-              <nav className="flex flex-col justify-center py-px mt-6 tracking-normal text-gray-500 border-b border-solid border-gray-500 border-opacity-20 max-md:max-w-full">
-                <div className="flex gap-5 justify-between pl-10 w-full max-md:flex-wrap max-md:px-5 max-md:max-w-full">
-                  <div className="flex gap-5 justify-between items-center text-sm font-medium leading-6 whitespace-nowrap">
-                    <span className="self-stretch my-auto border-b-4 border-sky-600">
-                      Videos
-                    </span>
-                    <span className="self-stretch my-auto">Archive</span>
-                    <span className="self-stretch my-auto">Screenshots</span>
-                  </div>
-                  <p className="self-start text-xs leading-6">{videos.length} videos</p>
-                </div>
-              </nav>
-              <section className="flex flex-col justify-center mt-2 ml-10 max-w-full w-[248px] max-md:mt-10 max-md:ml-2.5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-64 gap-y-0.5">
-                  {videos.map((video) => (
-                    <VideoCard key={video._id} video={video} />
-                  ))}
-                </div>
-              </section>
-            </section>
+          <nav className="flex justify-between items-center py-2 border-b border-gray-300 text-gray-500">
+            <div className="flex gap-4 text-sm font-medium">
+              <span className="border-b-2 border-blue-500 pb-1">Videos</span>
+              <span>Archive</span>
+              <span>Screenshots</span>
+            </div>
+            <p className="text-xs">{videos.length} videos</p>
+          </nav>
+          <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {videos.map((video) => (
+              <VideoCard key={video._id} video={video} />
+            ))}
           </section>
-        </main>
-      </div>
-      <div className="flex flex-col items-center justify-center">
-        <Link
-          to="/add-task"
-          className="bg-gray-500 text-white px-4 py-2 rounded-md mb-4 inline-block"
-        >
-          Add Task
-        </Link>
-        <Link
-          to="/videos"
-          className="bg-gray-500 text-white px-4 py-2 rounded-md mb-4 inline-block"
-        >
-          grabar video
-        </Link>
-        <div className="grid grid-cols-3 gap-4">
-          {tasks.map((task) => (
-            <TaskCard task={task} key={task._id} />
-          ))}
-        </div>
-        <video
-          className="w-[100%]"
-          src={`http://localhost:3000/api/videos/watch/6660b8f4df41a6d50edfd4df`}
-          controls
-        ></video>
-      </div>
-    </>
+        </section>
+      </main>
+    </div>
   );
 }
 
