@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useTasks } from "../context/TasksContext";
 import TaskCard from "../components/TaskCard";
 import { Link } from "react-router-dom";
+import AsideBar from "../components/AsideBar";
 
 function TasksPage() {
   const { getTasks, tasks } = useTasks();
@@ -25,6 +26,8 @@ function TasksPage() {
   }
 
   return (
+    <>
+    <AsideBar isOpen={true} />
     <div className="flex flex-col items-center justify-center">
       <Link
         to="/add-task"
@@ -32,18 +35,14 @@ function TasksPage() {
       >
         Add Task
       </Link>
-      <Link
-        to="/videos"
-        className="bg-gray-500 text-white px-4 py-2 rounded-md mb-4 inline-block"
-      >
-        videos
-      </Link>
+     
       <div className="grid grid-cols-3 gap-4">
         {tasks.map((task) => (
           <TaskCard task={task} key={task._id} />
         ))}
       </div>
     </div>
+    </>
   );
 }
 

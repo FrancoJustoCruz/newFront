@@ -10,6 +10,9 @@ import TaskFormPage from './pages/TaskFormPage'
 import ProfilePage from './pages/ProfilePage'
 import EditProfile from './pages/EditProfile'
 import UploadVideoPage from './pages/UploadVideoPage'
+import DashboardPage from './pages/DashboardPage'
+import VideoWatchPage from './pages/VideoWatchPage';
+import MyVideosPage from './pages/MyVideosPage'
 
 import ProtectedRoute from './ProtectedRoute'
 import { TaskProvider } from './context/TasksContext'
@@ -34,7 +37,10 @@ function App() {
         <Route path='/register' element={<RegisterPage/>}/>
         
         <Route element={<ProtectedRoute/>}>
-        <Route path='/tasks' element={<TasksPage/>}/>
+        <Route path='/notas' element={<TasksPage/>}/>
+        <Route path='/dashboard' element={<DashboardPage/>}/>
+        <Route path='/my-videos' element={<MyVideosPage/>}/>
+        <Route path="/videos/watch/:videoId" element={<VideoWatchPage />} />
         <Route path='/videos' element={<UploadVideoPage/>}/>
         <Route path='/add-task' element={<TaskFormPage/>}/>
         <Route path='/tasks/:id' element={<TaskFormPage/>}/>

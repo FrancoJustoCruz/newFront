@@ -7,16 +7,9 @@ function Navbar() {
     const { isAuthenticated } = useAuth()
 
     return (
-        <nav className="my-3 flex justify-between py-5 px-10 rounded-lg">
-            <Link to={isAuthenticated ? "/tasks" : "/"}>
-              <div className="flex">
-                <img src={logo} className="w-8 h-8 mr-2 pt-2" alt="Logo" />
-                <h1 className="flex text-2xl font-bold place-items-center text-[#282051]">
-                    devchallenges
-                </h1></div>
-            
-            </Link>
-            <ul className="flex gap-x-2">
+        <nav className="my-3 flex  py-5 px-10 rounded-lg">
+           
+            <ul className="flex gap-x-2 ml-auto"> {/* Aquí se añade ml-auto para alinear el DropdownMenu a la derecha */}
                 {isAuthenticated ? (
                     <li>
                         <DropdownMenu />
