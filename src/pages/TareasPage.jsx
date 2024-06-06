@@ -33,7 +33,7 @@ function TareasPage() {
                     My Library
                   </h1>
                   <h2 className="mt-3.5 text-3xl tracking-tighter leading-10 text-neutral-800">
-                    Videos
+                    Tareas
                   </h2>
                 </div>
                 <div className="flex gap-2 justify-center my-auto text-sm tracking-normal leading-6 text-center">
@@ -49,7 +49,7 @@ function TareasPage() {
                 <div className="flex gap-5 justify-between pl-10 w-full max-md:flex-wrap max-md:px-5 max-md:max-w-full">
                   <div className="flex gap-5 justify-between items-center text-sm font-medium leading-6 whitespace-nowrap">
                     <span className="self-stretch my-auto border-b-4 border-sky-600">
-                      Videos
+                      Tareas
                     </span>
                     <span className="self-stretch my-auto">Archive</span>
                     <span className="self-stretch my-auto">Screenshots</span>

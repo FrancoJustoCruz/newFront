@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import backgroundImage from '../../public/pikachujpg.jpg';
+import backgroundImage from '../../public/miniatura.jpg';
 
 const VideoCard = ({ video }) => {
   return (

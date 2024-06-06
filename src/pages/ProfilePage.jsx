@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function ProfilePage() {
   const { isAuthenticated, logout, user } = useAuth();
-
+console.log(user)
   return (
     <div className="flex items-center justify-center w-full bg-gray-100 mb-10 py-10">
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg">
@@ -36,7 +36,7 @@ function ProfilePage() {
         <div className="flex items-center border-b border-gray-200 p-8 bg-white">
           <div className="w-40 text-gray-400">LAST NAME</div>
           <div className="ml-4">
-            <h1 className="font-semibold text-sky-700">{user.lastName}</h1>
+            <h1 className="font-semibold text-sky-700">{user.lastname}</h1>
           </div>
         </div>
         <div className="flex items-center border-b border-gray-200 p-8 bg-gray-50">
