@@ -2,11 +2,12 @@ import InviteButton from "./InviteButton";
 import NavItem from "./NavItem";
 import WorkspaceCard from "./WorkspaceCard";
 import { Link } from "react-router-dom";
+import task from '/task1.png'
 
 const AsideBar = ({ isOpen }) => {
   return (
     <aside
-      className={`fixed top-0 left-0 flex flex-col pt-5 pb-3 w-56 bg-slate-100 px-2 h-screen min-w-56 z-20 transition-transform duration-300 ${
+      className={`fixed top-0 left-0 flex flex-col pt-5 pb-3 w-56 bg-slate-100 h-screen z-20 transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -14,21 +15,21 @@ const AsideBar = ({ isOpen }) => {
         <img
           loading="lazy"
           src="https://www.funval.fundaciondevalores.org/pluginfile.php/1/theme_moove/logo/1708634684/LOGO%20FUNVAL%20MOODLE.png"
-          className="max-w-full aspect-[4] w-[140px] m-auto"
+          className="max-w-full w-[140px] m-auto"
           alt="Logo"
         />
         <div className="flex flex-col mt-6">
           <WorkspaceCard />
           <InviteButton />
           <nav className="flex flex-col justify-center py-6 font-medium tracking-normal">
-          <NavItem
+            <NavItem
                src="https://cdn.builder.io/api/v1/image/assets/TEMP/eb8cebeb93c78b2222c91863a64d63fae79116600c87ef4cd0a097b962bb069d?apiKey=068bc3b969a34e00abe7da326a2da205&"
               text="Home"
               linkTo="/dashboard"
               isActive
             />
             <NavItem
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/eb8cebeb93c78b2222c91863a64d63fae79116600c87ef4cd0a097b962bb069d?apiKey=068bc3b969a34e00abe7da326a2da205&"
+              src={task}
               text="Tareas"
               linkTo="/tareas"
             />
@@ -39,7 +40,6 @@ const AsideBar = ({ isOpen }) => {
               isActive
             />
 
-            
             <NavItem
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/9b94d088928f640c1486acaccc2dfe362aba86c98749d18e514cd72e78a22312?apiKey=068bc3b969a34e00abe7da326a2da205&"
               text="Notas"

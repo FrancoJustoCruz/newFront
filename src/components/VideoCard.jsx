@@ -4,7 +4,7 @@ import backgroundImage from '../../public/pikachujpg.jpg';
 
 const VideoCard = ({ video }) => {
   return (
-    <article className="flex flex-col justify-center w-60 mt-4 drop-shadow-2xl hover:text-white hover:scale-105 transition-all duration-300 ease-in-out hover:bg-sky-500 cursor-pointer rounded-3xl p-2">
+    <article className="flex flex-col justify-center w-60 mt-4 drop-shadow-2xl hover:text-white hover:scale-105 transition-all duration-300 ease-in-out hover:bg-zinc-700 cursor-pointer rounded-3xl p-2">
       <div className="flex flex-col justify-center rounded-2xl">
         <div className="flex flex-col pb-2 rounded-2xl shadow-sm bg-white bg-opacity-0">
           <div className="flex flex-col justify-center text-white rounded-2xl">
@@ -24,7 +24,7 @@ const VideoCard = ({ video }) => {
               </section>
             </Link>
           </div>
-          <section className="flex flex-col mx-4 mt-4 max-md:mx-2.5 ">
+          <section className="flex flex-col mx-4 mt-4 max-md:mx-2.5">
             <div className="flex flex-row gap-2 items-center">
               <div className="flex flex-row">
                 <div className="flex justify-between text-xs tracking-normal leading-5">
@@ -33,13 +33,13 @@ const VideoCard = ({ video }) => {
                   </p>
                   
                 </div>
-                <p className="text-white font-extrabold">{video.title}</p>
+                <p className="font-extrabold">{video.title}</p>
               </div>
             </div>
             <p className="flex text-xs font-medium mt-2 tracking-normal leading-6">
               {video.description}
             </p>
-            <p className="text-gray-500">{new Date(video.createdAt).toLocaleString()}</p>
+            <p className="">{new Date(video.createdAt).toLocaleString()}</p>
             <div className="flex overflow-hidden relative pl-16 flex-row justify-between mt-4 w-full text-xs tracking-normal leading-5">
               <div className="flex flex-row">
                 <img
